@@ -510,7 +510,7 @@ function PolicyList({ policies, onToggleStatus, onCreateClick }) {
       const counts = { global: 0, topic: 0, event: 0, publisher: 0 };
       filtered.forEach(p => counts[p.resource]++);
       return (
-          <div className="flex flex-col gap-2 text-sm">
+          <div className="flex flex-col gap-1 text-xs">
               {Object.entries(counts).map(([k, v]) => v > 0 && (
                   <div key={k} className="flex items-center justify-between gap-3"><span className="text-gray-500 capitalize">{k}</span><span className="font-semibold text-gray-800">{v}</span></div>
               ))}
@@ -529,45 +529,45 @@ function PolicyList({ policies, onToggleStatus, onCreateClick }) {
         <Button icon={Plus} onClick={onCreateClick}>Create Policy</Button>
       </div>
 
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-5">
-        <div className="flex h-52 flex-col items-center justify-center rounded-xl border border-gray-200 bg-white shadow-sm">
-          <span className="text-6xl font-bold text-[#00a550]">{policies.length}</span>
-          <span className="mt-4 text-2xl font-medium text-gray-500">Total</span>
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-5">
+        <div className="flex flex-col items-center justify-center rounded-lg border border-gray-200 bg-white p-4 shadow-sm">
+          <span className="mb-1 text-4xl font-bold text-[#00a550]">{policies.length}</span>
+          <span className="text-sm font-medium text-gray-500">Total</span>
         </div>
 
-        <div className="flex h-52 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
-          <div className="flex w-1/2 flex-col items-center justify-center border-r border-gray-200 px-3 text-center">
-            <span className="text-6xl font-bold text-[#00a550]">{policies.filter(p => p.action.type === 'DEACTIVATE').length}</span>
-            <span className="mt-4 text-xl font-medium text-gray-500">Disable</span>
+        <div className="flex rounded-lg border border-gray-200 bg-white shadow-sm">
+          <div className="flex flex-1 flex-col items-center justify-center p-4">
+            <span className="mb-1 text-3xl font-bold text-[#00a550]">{policies.filter(p => p.action.type === 'DEACTIVATE').length}</span>
+            <span className="text-center text-sm font-medium text-gray-500">Disable</span>
           </div>
-          <div className="flex w-1/2 flex-col justify-center gap-3 px-4">
+          <div className="flex flex-1 flex-col justify-center space-y-2 border-l border-gray-100 p-4">
             {getSubBreakdown('DEACTIVATE')}
           </div>
         </div>
 
-        <div className="flex h-52 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
-          <div className="flex w-1/2 flex-col items-center justify-center border-r border-gray-200 px-3 text-center">
-            <span className="text-6xl font-bold text-[#00a550]">{policies.filter(p => p.action.type === 'DROP').length}</span>
-            <span className="mt-4 text-xl font-medium text-gray-500">Drop</span>
+        <div className="flex rounded-lg border border-gray-200 bg-white shadow-sm">
+          <div className="flex flex-1 flex-col items-center justify-center p-4">
+            <span className="mb-1 text-3xl font-bold text-[#00a550]">{policies.filter(p => p.action.type === 'DROP').length}</span>
+            <span className="text-center text-sm font-medium text-gray-500">Drop</span>
           </div>
-          <div className="flex w-1/2 flex-col justify-center gap-3 px-4">
+          <div className="flex flex-1 flex-col justify-center space-y-1 border-l border-gray-100 p-4">
             {getSubBreakdown('DROP')}
           </div>
         </div>
 
-        <div className="flex h-52 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
-          <div className="flex w-1/2 flex-col items-center justify-center border-r border-gray-200 px-3 text-center">
-            <span className="text-6xl font-bold text-[#00a550]">{policies.filter(p => p.action.type === 'OVERRIDE_TS').length}</span>
-            <span className="mt-4 text-xl font-medium leading-tight text-gray-500">Override<br />Timestamp</span>
+        <div className="flex rounded-lg border border-gray-200 bg-white shadow-sm">
+          <div className="flex flex-1 flex-col items-center justify-center p-4">
+            <span className="mb-1 text-3xl font-bold text-[#00a550]">{policies.filter(p => p.action.type === 'OVERRIDE_TS').length}</span>
+            <span className="text-center text-sm font-medium leading-tight text-gray-500">Override<br />Timestamp</span>
           </div>
-          <div className="flex w-1/2 flex-col justify-center gap-3 px-4">
+          <div className="flex flex-1 flex-col justify-center space-y-1 border-l border-gray-100 p-4">
             {getSubBreakdown('OVERRIDE_TS')}
           </div>
         </div>
 
-        <div className="flex h-52 flex-col items-center justify-center rounded-xl border border-gray-200 bg-white shadow-sm">
-          <span className="text-6xl font-bold text-[#00a550]">{policies.filter(p => p.action.type === 'DEDUPLICATION').length}</span>
-          <span className="mt-4 text-xl font-medium text-gray-500">Deduplication</span>
+        <div className="flex flex-col items-center justify-center rounded-lg border border-gray-200 bg-white p-4 shadow-sm">
+          <span className="mb-1 text-3xl font-bold text-[#00a550]">{policies.filter(p => p.action.type === 'DEDUPLICATION').length}</span>
+          <span className="text-center text-sm font-medium text-gray-500">Deduplication</span>
         </div>
       </div>
 
